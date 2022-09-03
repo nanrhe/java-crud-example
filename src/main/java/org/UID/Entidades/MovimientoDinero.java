@@ -1,4 +1,4 @@
-package org.UID;
+package org.UID.Entidades;
 
 public class MovimientoDinero {
 
