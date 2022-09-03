@@ -5,6 +5,8 @@ public class MovimientoDinero {
     private Float montoMovimiento;
     private String conceptoMovimiento;
 
+    private long id;
+
     //constructor
 
     public MovimientoDinero(Float montoMovimiento, String conceptoMovimiento) {

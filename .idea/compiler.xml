@@ -9,5 +9,8 @@
         <module name="UID" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="UID" target="18" />
+    </bytecodeTargetLevel>
   </component>
 </project>
