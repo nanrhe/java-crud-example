@@ -22,6 +22,9 @@ public class MovimientoDinero {
 
     //constructor
 
+    public MovimientoDinero() {
+    }
+
     public MovimientoDinero(long id, String conceptoMovimiento, Float montoMovimiento, boolean egreso, Date fechaCreacion, Date fechaActualizacion) {
         this.id = id;
         this.conceptoMovimiento = conceptoMovimiento;
