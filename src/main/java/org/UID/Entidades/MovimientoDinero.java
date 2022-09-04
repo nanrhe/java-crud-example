@@ -1,14 +1,23 @@
 package org.UID.Entidades;
 
+import javax.persistence.*;
 import java.util.Date;
-
+@Entity
+@Table (name="MovimientoDinero")
 public class MovimientoDinero {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(name = "conceptoMovimiento")
     private String conceptoMovimiento;
+    @Column(name = "montoMovimiento")
     private Float montoMovimiento;
+    @Column(name = "egreso")
     private boolean egreso;
+    @Column(name = "fechaCreacion")
     private Date fechaCreacion;
+    @Column(name = "fechaActualizacion")
     private Date fechaActualizacion;
 
     //constructor
