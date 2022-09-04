@@ -2,15 +2,17 @@ package org.UID.Entidades;
 
 public class Empresa {
     private  long id;
+    private int nit;
     private String nombreEmpresa;
     private String direccion;
-    private int nit;
+    private String telefono;
 
-    public Empresa(long id, String nombreEmpresa, String direccion, int nit) {
+    public Empresa(long id, int nit, String nombreEmpresa, String direccion, String telefono) {
         this.id = id;
+        this.nit = nit;
         this.nombreEmpresa = nombreEmpresa;
         this.direccion = direccion;
-        this.nit = nit;
+        this.telefono = telefono;
     }
 
     public long getId() {
@@ -19,6 +21,14 @@ public class Empresa {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public int getNit() {
+        return nit;
+    }
+
+    public void setNit(int nit) {
+        this.nit = nit;
     }
 
     public String getNombreEmpresa() {
@@ -37,11 +47,11 @@ public class Empresa {
         this.direccion = direccion;
     }
 
-    public int getNit() {
-        return nit;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setNit(int nit) {
-        this.nit = nit;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }
