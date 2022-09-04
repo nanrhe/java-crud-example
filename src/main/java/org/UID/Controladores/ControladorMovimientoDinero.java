@@ -15,7 +15,7 @@ public class ControladorMovimientoDinero {
         this.servicesMD = servicesMD;
     }
 
-    @GetMapping("movimientos")
+    @GetMapping("/movimientos")
     public List<MovimientoDinero> ListaMovimientoDinero(){
         return this.servicesMD.getListaMovimientoDinero();
     }
