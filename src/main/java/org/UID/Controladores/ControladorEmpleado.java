@@ -19,11 +19,11 @@ public class ControladorEmpleado {
         this.servicesMD = servicesMD;
     }
 
-    @GetMapping("/Empleado")
+    @GetMapping("/empleado")
     public List<Empleado> ListaEmpleado() {
         return this.servicesMD.getListaEmpleado();
     }
-    @PostMapping("/Empleado")
+    @PostMapping("/empleado")
     public Empleado createEmpleado(@RequestBody Empleado empleado ){return this.servicesMD.createEmpleado(empleado);
     }
 
