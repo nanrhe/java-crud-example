@@ -1,11 +1,24 @@
 package org.UID.Entidades;
+import javax.persistence.*;
 
+
+@Entity
+@Table(name = "Empleado")
 public class Empleado {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(name = "Nombre")
     private String Nombre;
+    @Column(name = "correo")
     private String correo;
+    @Column(name = "empresa")
     private String empresa;
+    @Column(name = "rol")
     private String rol;
+
+    public Empleado() {
+    }
 
     public Empleado(long id, String nombre, String correo, String empresa, String rol) {
         this.id = id;
