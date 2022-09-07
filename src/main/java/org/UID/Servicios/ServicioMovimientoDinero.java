@@ -1,5 +1,6 @@
 package org.UID.Servicios;
 
+import org.UID.Entidades.Empleado;
 import org.UID.Entidades.MovimientoDinero;
 import org.UID.Repositorio.RepositorioMovimientoDinero;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,18 @@ public class ServicioMovimientoDinero {
         return this.repositorioMD.save(ingreso);
     }
 
+   //falta aclarar como se modifica un bolean, porque al ingresar no  me sale la opcion del getEgreso
+    public MovimientoDinero actMovimiento(Long id, MovimientoDinero nuevomovimiento){
+        MovimientoDinero movimentoActual = repositorioMD.findById(id).orElseThrow();
+        movimentoActual.setMontoMovimiento(nuevomovimiento.getMontoMovimiento());
+        movimentoActual.setConceptoMovimiento(nuevomovimiento.getConceptoMovimiento());
+        return this.repositorioMD.save(nuevomovimiento);
+    }
+    //metodo Borrar
+    public MovimientoDinero eliminarM(Long id){
+        MovimientoDinero movimientoActual = repositorioMD.findById(id).orElseThrow(); // Muestra lo que se borro
+        this.repositorioMD.deleteById(id);
+        return movimientoActual;
+    }
 
 }

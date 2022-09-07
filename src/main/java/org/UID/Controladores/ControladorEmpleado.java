@@ -10,27 +10,27 @@ import java.util.List;
 public class ControladorEmpleado {
 
 
-    ServicioEmpleado servicesMD;
+    ServicioEmpleado servicesE;
 
-    public ControladorEmpleado(ServicioEmpleado servicesMD) {
-        this.servicesMD = servicesMD;
+    public ControladorEmpleado(ServicioEmpleado servicesE) {
+        this.servicesE = servicesE;
     }
 
     @GetMapping("/empleado")
     public List<Empleado> ListaEmpleado() {
-        return this.servicesMD.getListaEmpleado();
+        return this.servicesE.getListaEmpleado();
     }
     @PostMapping("/empleado")
-    public Empleado createEmpleado(@RequestBody Empleado empleado ){return this.servicesMD.createEmpleado(empleado);
+    public Empleado createEmpleado(@RequestBody Empleado empleado ){return this.servicesE.createEmpleado(empleado);
     }
 
-    @PutMapping("/empleado/{id}")
+    @PutMapping("/empleado/editar/{id}")
     public Empleado actualizarEmpleado(@PathVariable Long id, @RequestBody Empleado actEmpleado){
-    return this.servicesMD.actEmpleado(id, actEmpleado);
+    return this.servicesE.actEmpleado(id, actEmpleado);
     }
 
-    @DeleteMapping("empleado/{id}")
+    @DeleteMapping("/empleado/eliminar/{id}")
     public Empleado eliminarEmpleado(@PathVariable(value = "id") Long id){
-        return this.servicesMD.eliminarE(id);
+        return this.servicesE.eliminarE(id);
     }
 }

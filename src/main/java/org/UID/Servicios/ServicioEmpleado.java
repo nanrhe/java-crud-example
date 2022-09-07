@@ -9,30 +9,30 @@ import java.util.List;
 @Service
 public class ServicioEmpleado {
 
-    private RepositorioEmpleado repositorioMD;
+    private RepositorioEmpleado repositorioE;
 
     public ServicioEmpleado(RepositorioEmpleado repositorioMD) {
-        this.repositorioMD = repositorioMD;
+        this.repositorioE = repositorioMD;
     }
     public List<Empleado> getListaEmpleado(){
-        return this.repositorioMD.findAll();
+        return this.repositorioE.findAll();
     }
 
     public Empleado createEmpleado(Empleado empleado){
-        return this.repositorioMD.save(empleado);
+        return this.repositorioE.save(empleado);
     }
 
     // metodo acatualizar
     public Empleado actEmpleado(Long id, Empleado nuevoempleado){
-        Empleado empleadoActual = repositorioMD.findById(id).orElseThrow();
+        Empleado empleadoActual = repositorioE.findById(id).orElseThrow();
         empleadoActual.setNombre(nuevoempleado.getNombre());
         empleadoActual.setCorreo(nuevoempleado.getCorreo());
-        return this.repositorioMD.save(empleadoActual);
+        return this.repositorioE.save(empleadoActual);
     }
     //metodo Borrar
     public Empleado eliminarE(Long id){
-        Empleado empleadoActual = repositorioMD.findById(id).orElseThrow(); // Muestra lo que se borro
-        this.repositorioMD.deleteById(id);
+        Empleado empleadoActual = repositorioE.findById(id).orElseThrow(); // Muestra lo que se borro
+        this.repositorioE.deleteById(id);
         return empleadoActual;
     }
 }
