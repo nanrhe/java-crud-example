@@ -2,10 +2,7 @@ package org.UID.Controladores;
 
 import org.UID.Entidades.Empleado;
 import org.UID.Servicios.ServicioEmpleado;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +24,13 @@ public class ControladorEmpleado {
     public Empleado createEmpleado(@RequestBody Empleado empleado ){return this.servicesMD.createEmpleado(empleado);
     }
 
+    @PutMapping("/empleado/{id}")
+    public Empleado actualizarEmpleado(@PathVariable Long id, @RequestBody Empleado actEmpleado){
+    return this.servicesMD.actEmpleado(id, actEmpleado);
+    }
+
+    @DeleteMapping("empleado/{id}")
+    public Empleado eliminarEmpleado(@PathVariable(value = "id") Long id){
+        return this.servicesMD.eliminarE(id);
+    }
 }
