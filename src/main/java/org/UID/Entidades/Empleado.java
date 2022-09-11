@@ -1,5 +1,6 @@
 package org.UID.Entidades;
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Entity
@@ -10,23 +11,37 @@ public class Empleado {
     private long id;
     @Column(name = "Nombre")
     private String Nombre;
+
+    @Column(name = "documentoEmpleado")
+    private int documentoEmpleado;
     @Column(name = "correo")
     private String correo;
-    @Column(name = "empresa")
-    private String empresa;
     @Column(name = "rol")
     private String rol;
+
+    //Al crear el empleado este se relaciona con una Empresa, para eso se genera el MayToOne al id de la empresa
+    /* @Column(name = "empresa")
+    private String empresa;*/
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "EmpresaID", nullable = false)
+    private Empresa empresas;
+
+    //Se crea el mapeo para que el empleado pueda ser asignado a un movimiento de dinero
+    //nuevo
+    @OneToMany(mappedBy="empleadoMovimiento")
+    private Set<MovimientoDinero> movimientos;
 
     public Empleado() {
     }
 
-    public Empleado(long id, String nombre, String correo, String empresa, String rol) {
+   /* public Empleado(long id, String nombre, String correo, String empresa, String rol) {
         this.id = id;
         Nombre = nombre;
         this.correo = correo;
         this.empresa = empresa;
         this.rol = rol;
-    }
+    }*/
 
     public long getId() {
         return id;
@@ -51,7 +66,7 @@ public class Empleado {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
+/*
     public String getEmpresa() {
         return empresa;
     }
@@ -59,12 +74,28 @@ public class Empleado {
     public void setEmpresa(String empresa) {
         this.empresa = empresa;
     }
-
+*/
     public String getRol() {
         return rol;
     }
 
     public void setRol(String rol) {
         this.rol = rol;
+    }
+
+    public Empresa getEmpresas() {
+        return empresas;
+    }
+
+    public void setEmpresas(Empresa empresas) {
+        this.empresas = empresas;
+    }
+
+    public Set<MovimientoDinero> getMovimientos() {
+        return movimientos;
+    }
+
+    public void setMovimientos(Set<MovimientoDinero> movimientos) {
+        this.movimientos = movimientos;
     }
 }

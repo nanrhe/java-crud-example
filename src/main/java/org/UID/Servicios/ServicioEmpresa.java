@@ -1,5 +1,6 @@
 package org.UID.Servicios;
 
+import org.UID.Entidades.Empleado;
 import org.UID.Entidades.Empresa;
 import org.UID.Repositorio.RepositorioEmpresa;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,10 @@ public class ServicioEmpresa {
     public ServicioEmpresa(RepositorioEmpresa repositorioEmp){this.repositorioEmp = repositorioEmp;}
 
     public List<Empresa> getListaEmpresa() {return this.repositorioEmp.findAll();}
+
+    public Empresa getVerEmpresa(Long id){
+        return this.repositorioEmp.findById(id).orElseThrow();
+    }
 
     public Empresa createEmpresa(Empresa empresa){return  this.repositorioEmp.save(empresa);}
 

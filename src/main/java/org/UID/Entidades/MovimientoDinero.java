@@ -5,7 +5,6 @@ import java.util.Date;
 @Entity
 @Table (name="MovimientoDinero")
 public class MovimientoDinero {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -19,12 +18,14 @@ public class MovimientoDinero {
     private Date fechaCreacion;
     @Column(name = "fechaActualizacion")
     private Date fechaActualizacion;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idEmpleado", nullable = false)
+    private Empleado empleadoMovimiento;
 
     //constructor
-
     public MovimientoDinero() {
     }
-
+/*
     public MovimientoDinero(long id, String conceptoMovimiento, Float montoMovimiento, boolean egreso, Date fechaCreacion, Date fechaActualizacion) {
         this.id = id;
         this.conceptoMovimiento = conceptoMovimiento;
@@ -32,20 +33,17 @@ public class MovimientoDinero {
         this.egreso = egreso;
         this.fechaCreacion = fechaCreacion;
         this.fechaActualizacion = fechaActualizacion;
-    }
+    }*/
 
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
-
     public String getConceptoMovimiento() {
         return conceptoMovimiento;
     }
-
     public void setConceptoMovimiento(String conceptoMovimiento) {
         this.conceptoMovimiento = conceptoMovimiento;
     }
@@ -64,16 +62,20 @@ public class MovimientoDinero {
     public Date getFechaCreacion() {
         return fechaCreacion;
     }
-
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
-
     public Date getFechaActualizacion() {
         return fechaActualizacion;
     }
 
     public void setFechaActualizacion(Date fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
+    }
+    public Empleado getEmpleadoMovimiento() {
+        return empleadoMovimiento;
+    }
+    public void setEmpleadoMovimiento(Empleado empleadoMovimiento) {
+        this.empleadoMovimiento = empleadoMovimiento;
     }
 }

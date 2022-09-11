@@ -14,22 +14,33 @@ public class ServicioMovimientoDinero {
     public ServicioMovimientoDinero(RepositorioMovimientoDinero repositorioMD){
         this.repositorioMD = repositorioMD;
     }
+
+    //Servicio que lista y muestra todos los movimientos de dinero
     public List<MovimientoDinero> getListaMovimientoDinero(){
         return this.repositorioMD.findAll();
     }
 
+    //Servicio para ver un movimiento de dinero segun ID
+    public MovimientoDinero getVerMovimientoDinero(Long id){
+        return this.repositorioMD.findById(id).orElseThrow();
+    }
+    //Servicio para Crear un movimiento de dinero
     public MovimientoDinero createMovimiento(MovimientoDinero ingreso){
         return this.repositorioMD.save(ingreso);
     }
 
-   //falta aclarar como se modifica un bolean, porque al ingresar no  me sale la opcion del getEgreso
+
+    //Servicio para Editar un movimiento de dinero segun ID
     public MovimientoDinero actMovimiento(Long id, MovimientoDinero nuevomovimiento){
         MovimientoDinero movimentoActual = repositorioMD.findById(id).orElseThrow();
         movimentoActual.setMontoMovimiento(nuevomovimiento.getMontoMovimiento());
         movimentoActual.setConceptoMovimiento(nuevomovimiento.getConceptoMovimiento());
+        movimentoActual.setFechaActualizacion(nuevomovimiento.getFechaActualizacion());
+        movimentoActual.setEgreso(nuevomovimiento.isEgreso());
         return this.repositorioMD.save(nuevomovimiento);
     }
-    //metodo Borrar
+
+    //Servicio para eliminar un movimiento de dinero segun ID
     public MovimientoDinero eliminarM(Long id){
         MovimientoDinero movimientoActual = repositorioMD.findById(id).orElseThrow(); // Muestra lo que se borro
         this.repositorioMD.deleteById(id);

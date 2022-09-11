@@ -1,6 +1,7 @@
 package org.UID.Entidades;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name= "Empresa")
@@ -12,15 +13,18 @@ public class Empresa {
     private int nit;
     @Column(name = "nombreEmpresa")
     private String nombreEmpresa;
-
     @Column(name = "direccion")
     private String direccion;
     @Column(name = "telefono")
     private String telefono;
 
+    //se crea el mapeo a empresa empleados, para que la empresa pueda ser realcionada con muchos empleados
+    @OneToMany(mappedBy="empresas")
+    private Set<Empleado> empleados;
+
     public Empresa() {
     }
-
+/*
     public Empresa(long id, int nit, String nombreEmpresa, String direccion, String telefono) {
         this.id = id;
         this.nit = nit;
@@ -28,7 +32,7 @@ public class Empresa {
         this.direccion = direccion;
         this.telefono = telefono;
     }
-
+*/
     public long getId() {
         return id;
     }
@@ -67,5 +71,12 @@ public class Empresa {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public Set<Empleado> getEmpleados() {
+        return empleados;
+    }
+    public void setEmpleados(Set<Empleado> empleados) {
+        this.empleados = empleados;
     }
 }

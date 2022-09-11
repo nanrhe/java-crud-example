@@ -1,6 +1,7 @@
 package org.UID.Servicios;
 
 import org.UID.Entidades.Empleado;
+import org.UID.Entidades.MovimientoDinero;
 import org.UID.Repositorio.RepositorioEmpleado;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,9 @@ public class ServicioEmpleado {
     }
     public List<Empleado> getListaEmpleado(){
         return this.repositorioE.findAll();
+    }
+    public Empleado getVerEmpleado(Long id){
+        return this.repositorioE.findById(id).orElseThrow();
     }
 
     public Empleado createEmpleado(Empleado empleado){
