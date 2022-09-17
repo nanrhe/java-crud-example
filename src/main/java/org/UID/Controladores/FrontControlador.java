@@ -1,12 +1,15 @@
 package org.UID.Controladores;
 
+import org.UID.Entidades.MovimientoDinero;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class FrontControlador {
     @GetMapping("/")   //Ruta Raiz
-    public String index(){
-        return "index";
-    }
+    public String index(){return "index";}
+
 }

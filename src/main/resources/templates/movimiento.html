@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="Los cinco en Linea">
-  <title>Empresa</title>
+  <title>Movimiento</title>
 
   <link href="/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="/dashboard.css" rel="stylesheet">
+  <link href="/styles.css" rel="stylesheet">
 </head>
 <body>
 
@@ -64,6 +65,50 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Movimientos Dinero</h1>
       </div>
+
+      <a class="btn btn-primary" href="/movimiento/nuevo">Agregar nuevo movimiento</a>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+          <tr>
+            <th scope="col">Id Movimiento</th>
+            <th scope="col">Concepto del movimiento</th>
+            <th scope="col">Monto</th>
+            <th scope="col">Egreso</th>
+            <th scope="col">Fecha actualización</th>
+            <th scope="col">Fecha creación</th>
+            <th scope="col">Nombre empleado</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="movimientos:${movimientos}">
+            <td th:text="${movimientos.id}"></td>
+            <td th:text="${movimientos.conceptoMovimiento}"></td>
+            <td th:text="${movimientos.montoMovimiento}"></td>
+            <td th:text="${movimientos.egreso}"></td>
+            <td th:text="${movimientos.fechaActualizacion}"></td>
+            <td th:text="${movimientos.fechaCreacion}"></td>
+            <td th:text="${movimientos.empleadoMovimiento.Nombre}"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </main>
   </div>
