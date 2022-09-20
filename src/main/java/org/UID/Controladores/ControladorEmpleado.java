@@ -2,12 +2,15 @@ package org.UID.Controladores;
 
 import org.UID.Entidades.Empleado;
 import org.UID.Entidades.Empresa;
+import org.UID.Entidades.MovimientoDinero;
 import org.UID.Servicios.ServicioEmpleado;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class ControladorEmpleado {
 
 
@@ -17,9 +20,16 @@ public class ControladorEmpleado {
         this.servicesE = servicesE;
     }
 
-    @GetMapping("/empleado")
+    /*@GetMapping("/empleado")
     public List<Empleado> ListaEmpleado() {
         return this.servicesE.getListaEmpleado();
+    }*/
+
+    @GetMapping("/empleado")
+    public String empleados(Model modele) {
+        List<Empleado> empleados = this.servicesE.getListaEmpleado();
+        modele.addAttribute("empleados",empleados);
+        return "empleado";
     }
     @GetMapping("/empleado/{id}")
     public Empleado verEmpleado(@PathVariable Long id) {

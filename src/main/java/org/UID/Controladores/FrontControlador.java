@@ -12,4 +12,8 @@ public class FrontControlador {
     @GetMapping("/")   //Ruta Raiz
     public String index(){return "index";}
 
+    @GetMapping("/inicio")   //Ruta home
+    public String inicio(){return "inicio";}
+
+
 }
