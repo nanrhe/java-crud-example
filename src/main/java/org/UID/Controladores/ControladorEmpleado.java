@@ -25,12 +25,7 @@ public class ControladorEmpleado {
         return this.servicesE.getListaEmpleado();
     }*/
 
-    @GetMapping("/empleado")
-    public String empleados(Model modele) {
-        List<Empleado> empleados = this.servicesE.getListaEmpleado();
-        modele.addAttribute("empleados",empleados);
-        return "empleado";
-    }
+
     @GetMapping("/empleado/{id}")
     public Empleado verEmpleado(@PathVariable Long id) {
         return this.servicesE.getVerEmpleado(id);
@@ -44,7 +39,7 @@ public class ControladorEmpleado {
     return this.servicesE.actEmpleado(id, actEmpleado);
     }
 
-    @DeleteMapping("/empleado/eliminar/{id}")
+    @DeleteMapping("/empleado/{id}")
     public Empleado eliminarEmpleado(@PathVariable(value = "id") Long id){
         return this.servicesE.eliminarE(id);
     }
