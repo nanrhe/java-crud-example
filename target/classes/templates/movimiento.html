@@ -90,9 +90,9 @@
             <td th:text="${movimientos.fechaActualizacion}"></td>
             <td th:text="${movimientos.fechaCreacion}"></td>
             <td th:text="${movimientos.empleadoMovimiento.Nombre}"></td>
-            <td>   <form th:action="@{/movimiento/{id}(id=${movimientos.id})}" th:method="get">
-              <button type="submit" class="btn btn-primary">Editar</button>
-            </form>
+            <td>   <a class="btn btn-primary" th:href="@{/movimiento/{id}(id=${movimientos.id})}" data-toggle="tooltip" data-placement="bottom" title="Editar">
+              <span data-feather="edit" class="align-text-bottom"></span>
+            </a>
 
               <form th:action="@{/movimiento/{id}(id=${movimientos.id})}" th:method="delete">
                 <button type="submit" class="btn btn-danger">Eliminar</button>

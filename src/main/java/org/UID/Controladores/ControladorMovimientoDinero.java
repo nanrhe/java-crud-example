@@ -30,13 +30,21 @@ public class ControladorMovimientoDinero {
     }*/
 
     @PutMapping("/movimiento/{id}")
-    public RedirectView actualizarMovimiento(@PathVariable Long id, MovimientoDinero actMovimiento){
-        this.servicesMD.actMovimiento(id, actMovimiento);
+    public RedirectView actualizarMovimiento(@PathVariable Long id, MovimientoDinero editMovimiento){
+        this.servicesMD.actMovimiento(id, editMovimiento);
         return new RedirectView("/movimiento");
     }
     //Controlador para eliminar un movimiento segun id
-    @DeleteMapping("/movimiento/eliminar/{id}")
+    /*@DeleteMapping("/movimiento/{id}")
     public MovimientoDinero eliminarMovimiento(@PathVariable(value = "id") Long id) {
         return this.servicesMD.eliminarM(id);
+    }*/
+    @DeleteMapping("/movimiento/{id}")
+    public RedirectView eliminarMovimiento(@PathVariable(value = "id") Long id){
+        this.servicesMD.eliminarM(id);
+        return new RedirectView("/movimiento");
     }
+
+
+
 }

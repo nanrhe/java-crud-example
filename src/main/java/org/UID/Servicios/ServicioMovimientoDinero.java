@@ -1,6 +1,5 @@
 package org.UID.Servicios;
 
-import org.UID.Entidades.Empleado;
 import org.UID.Entidades.MovimientoDinero;
 import org.UID.Repositorio.RepositorioMovimientoDinero;
 import org.springframework.stereotype.Service;
@@ -31,13 +30,15 @@ public class ServicioMovimientoDinero {
 
 
     //Servicio para Editar un movimiento de dinero segun ID
-    public MovimientoDinero actMovimiento(Long id, MovimientoDinero nuevomovimiento){
+    public MovimientoDinero actMovimiento(Long id, MovimientoDinero editMovimiento){
         MovimientoDinero movimentoActual = repositorioMD.findById(id).orElseThrow();
-        movimentoActual.setMontoMovimiento(nuevomovimiento.getMontoMovimiento());
-        movimentoActual.setConceptoMovimiento(nuevomovimiento.getConceptoMovimiento());
-        movimentoActual.setFechaActualizacion(nuevomovimiento.getFechaActualizacion());
-        movimentoActual.setEgreso(nuevomovimiento.isEgreso());
-        return this.repositorioMD.save(nuevomovimiento);
+        movimentoActual.setMontoMovimiento(editMovimiento.getMontoMovimiento());
+        movimentoActual.setConceptoMovimiento(editMovimiento.getConceptoMovimiento());
+        movimentoActual.setFechaActualizacion(editMovimiento.getFechaActualizacion());
+        movimentoActual.setEgreso(editMovimiento.isEgreso());
+        movimentoActual.setEmpleadoMovimiento(editMovimiento.getEmpleadoMovimiento());
+        movimentoActual.setFechaCreacion(editMovimiento.getFechaCreacion());
+        return this.repositorioMD.save(movimentoActual);
     }
 
     //Servicio para eliminar un movimiento de dinero segun ID
@@ -46,5 +47,6 @@ public class ServicioMovimientoDinero {
         this.repositorioMD.deleteById(id);
         return movimientoActual;
     }
+
 
 }

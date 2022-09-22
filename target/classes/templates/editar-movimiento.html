@@ -65,8 +65,8 @@
         <h1 class="h2">Editar Movimientos Dinero</h1>
       </div>
 
-      <div th:each="movimientoFind : ${movimientoFind}" class="col-lg-5 mx-auto">
-        <form th:action="@{/movimiento/{id}(id=${movimientoFind.id})}" th:method="put" class="d-flex flex-column gap-3 align-items-center">
+      <div th:each="movimientoFind : ${movimientoFind}">
+        <form th:action="@{/movimiento/{id}(id=${movimientoFind.id})}" th:method="put" class="flex-column gap-3 align-items-center">
 
         <div class="form-floating mb-3">
             <input th:field="*{movimientoFind.conceptoMovimiento}" type="text" class="form-control" id="fconceptoMovimiento" placeholder="Concepto Movimiento">
@@ -81,12 +81,12 @@
             <label class="form-check-label" for="egreso">Marcar solo si es un egreso</label>
           </div>
           <div class="form-floating  mb-3">
-            <input th:field="*{movimientoFind.fechaCreacion}"  type="date" class="form-control" id="ffechaCreacion" placeholder="fecha Creacion">
+            <input th:field="*{movimientoFind.fechaCreacion}"  type="datetime-local" class="form-control" id="ffechaCreacion" placeholder="fecha Creacion">
             <label for="ffechaCreacion">Fecha creacion</label>
           </div>
           <div class="form-floating  mb-3">
-            <input th:field="*{movimientoFind.fechaActualizacion}"  type="date" class="form-control" id="ffechaActualizacion" placeholder="fecha Actualizacion">
-            <label for="ffechaActualizacion">Fecha creacion</label>
+            <input th:field="*{movimientoFind.fechaActualizacion}"  type="datetime-local" class="form-control" id="ffechaActualizacion" placeholder="fecha Actualizacion">
+            <label for="ffechaActualizacion">Fecha Actualización</label>
           </div>
           <div class="form-floating mb-3">
             <input th:field="*{movimientoFind.empleadoMovimiento.id}"  type="number" class="form-control" id="rempleado" placeholder="ID Empleado">
@@ -96,63 +96,6 @@
           <a href="/movimiento" class="btn btn-secundary">Cancelar</a>
         </form>
       </div>
-
-
-
-      <div  class="col-lg-5 mx-auto">
-              <div class="d-flex gap-1 justify-content-left">
-            <label class="display-8 fw-bold mb-1">Documento:</label>
-            <input th:field="*{movimientoFind.documentoIdentidad}" class="form-control" type="number" placeholder="Documento de identidad" disabled="true"/>
-          </div>
-
-
-
-
-        </form>
-
-      </div>
-
-
-
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Consultar ID empleados
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Lista de empleados</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-              <div class="table-responsive">
-                <table class="table table-striped table-sm">
-                  <thead>
-                  <tr>
-                    <th scope="col">Id Empleado</th>
-                    <th scope="col">Nombre del Empleado</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr th:each="empleados:${empleados}">
-                    <td th:text="${empleadoMovimiento.id}"></td>
-                    <td th:text="${empleadoMovimiento.Nombre}"></td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
 
 
 
