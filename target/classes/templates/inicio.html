@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org" >
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,14 +14,18 @@
   </head>
   <body>
 
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow ">
       <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">UID</a>
       <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-        <div class="navbar-nav">
+        <div class="navbar-nav d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ">
         <div class="nav-item text-nowrap" sec:authorize="isAuthenticated()">
-          <a th:href="@{/logout}" class="nav-link px-3" >SALIR</a>
+          <div class="dropdown text-end">
+            <img th:src="${profile.get('picture')}" th:attr="alt=${profile.get('name')}"  width="32" height="32" class="rounded-circle"/>
+            <span class="text-white" th:text="${profile.get('name')}"></span>
+            <a th:href="@{/logout}" class="btn" >SALIR</a>
+          </div>
         </div>
       </div>
     </header>
