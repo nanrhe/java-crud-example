@@ -25,8 +25,8 @@ public class ServicioMovimientoDinero {
         return this.repositorioMD.findById(id).orElseThrow();
     }
     //Servicio para Crear un movimiento de dinero
-    public MovimientoDinero createMovimiento(MovimientoDinero ingreso){
-        return this.repositorioMD.save(ingreso);
+    public MovimientoDinero createMovimiento(MovimientoDinero nuevoMovimiento){
+        return this.repositorioMD.save(nuevoMovimiento);
     }
 
 

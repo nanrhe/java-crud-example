@@ -62,41 +62,55 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Crear Movimientos Dinero</h1>
+        <h1 class="h2">Editar Movimientos Dinero</h1>
       </div>
 
-      <div class="col-lg-5 mx-auto">
-        <form th:action="@{/movimiento}" th:method="post" th:object="${movimiento}" class="d-flex flex-column gap-3 aling-items-center">
+      <div th:each="movimientoFind : ${movimientoFind}" class="col-lg-5 mx-auto">
+        <form th:action="@{/movimiento/{id}(id=${movimientoFind.id})}" th:method="put" class="d-flex flex-column gap-3 align-items-center">
 
-          <div class="form-floating mb-3">
-            <input th:field="*{conceptoMovimiento}" type="text" class="form-control" id="fconceptoMovimiento" placeholder="Concepto Movimiento">
+        <div class="form-floating mb-3">
+            <input th:field="*{movimientoFind.conceptoMovimiento}" type="text" class="form-control" id="fconceptoMovimiento" placeholder="Concepto Movimiento">
             <label for="fconceptoMovimiento">Concepto movimiento</label>
           </div>
           <div class="form-floating  mb-3">
-            <input th:field="*{montoMovimiento}"  type="number" class="form-control" id="fmontoMovimiento" placeholder="Monto Movimiento">
+            <input th:field="*{movimientoFind.montoMovimiento}"  type="number" class="form-control" id="fmontoMovimiento" placeholder="Monto Movimiento">
             <label for="fmontoMovimiento">Monto Movimiento</label>
           </div>
           <div class="mb-3 form-check">
-            <input th:field="*{egreso}" type="checkbox" class="form-check-input" id="egreso">
+            <input th:field="*{movimientoFind.egreso}" type="checkbox" class="form-check-input" id="egreso">
             <label class="form-check-label" for="egreso">Marcar solo si es un egreso</label>
           </div>
           <div class="form-floating  mb-3">
-            <input th:field="*{fechaCreacion}"  type="date" class="form-control" id="ffechaCreacion" placeholder="fecha Creacion">
+            <input th:field="*{movimientoFind.fechaCreacion}"  type="date" class="form-control" id="ffechaCreacion" placeholder="fecha Creacion">
             <label for="ffechaCreacion">Fecha creacion</label>
           </div>
           <div class="form-floating  mb-3">
-            <input th:field="*{fechaActualizacion}"  type="date" class="form-control" id="ffechaActualizacion" placeholder="fecha Actualizacion">
+            <input th:field="*{movimientoFind.fechaActualizacion}"  type="date" class="form-control" id="ffechaActualizacion" placeholder="fecha Actualizacion">
             <label for="ffechaActualizacion">Fecha creacion</label>
           </div>
           <div class="form-floating mb-3">
-            <input th:field="*{empleadoMovimiento.id}"  type="number" class="form-control" id="registroMedico" placeholder="Id Empleado">
-            <label for="registroMedico">ID del Empleado</label>
+            <input th:field="*{movimientoFind.empleadoMovimiento.id}"  type="number" class="form-control" id="rempleado" placeholder="ID Empleado">
+            <label for="rempleado">ID del Empleado</label>
           </div>
-          <button type="submit" class="btn btn-primary">Crear</button>
+          <button type="submit" class="btn btn-primary">Editar</button>
           <a href="/movimiento" class="btn btn-secundary">Cancelar</a>
         </form>
       </div>
 
+
+
+      <div  class="col-lg-5 mx-auto">
+              <div class="d-flex gap-1 justify-content-left">
+            <label class="display-8 fw-bold mb-1">Documento:</label>
+            <input th:field="*{movimientoFind.documentoIdentidad}" class="form-control" type="number" placeholder="Documento de identidad" disabled="true"/>
+          </div>
+
+
+
+
+        </form>
+
+      </div>
 
 
 

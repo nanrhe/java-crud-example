@@ -18,8 +18,8 @@ public class MovimientoDinero {
     private Date fechaCreacion;
     @Column(name = "fechaActualizacion")
     private Date fechaActualizacion;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idEmpleado", nullable = false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "idEmpleado")
     private Empleado empleadoMovimiento;
 
     //constructor

@@ -65,36 +65,39 @@
         <h1 class="h2">Crear Movimientos Dinero</h1>
       </div>
 
+      <div class="col-lg-5 mx-auto">
+        <form th:action="@{/movimiento}" th:method="post" th:object="${movimiento}" class="d-flex flex-column gap-3 aling-items-center">
 
-      <form th:action="@{/movimiento}" th:method="post" th:object="${movimiento}">
+          <div class="form-floating mb-3">
+            <input th:field="*{conceptoMovimiento}" type="text" class="form-control" id="fconceptoMovimiento" placeholder="Concepto Movimiento">
+            <label for="fconceptoMovimiento">Concepto movimiento</label>
+          </div>
+          <div class="form-floating  mb-3">
+            <input th:field="*{montoMovimiento}"  type="number" class="form-control" id="fmontoMovimiento" placeholder="Monto Movimiento">
+            <label for="fmontoMovimiento">Monto Movimiento</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input th:field="*{egreso}" type="checkbox" class="form-check-input" id="egreso">
+            <label class="form-check-label" for="egreso">Marcar solo si es un egreso</label>
+          </div>
+          <div class="form-floating  mb-3">
+            <input th:field="*{fechaCreacion}"  type="date" class="form-control" id="ffechaCreacion" placeholder="fecha Creacion">
+            <label for="ffechaCreacion">Fecha creacion</label>
+          </div>
+          <div class="form-floating  mb-3">
+            <input th:field="*{fechaActualizacion}"  type="date" class="form-control" id="ffechaActualizacion" placeholder="fecha Actualizacion">
+            <label for="ffechaActualizacion">Fecha creacion</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input th:field="*{empleadoMovimiento.id}"  type="number" class="form-control" id="registroMedico" placeholder="Id Empleado">
+            <label for="registroMedico">ID del Empleado</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Crear</button>
+          <a href="/movimiento" class="btn btn-secundary">Cancelar</a>
+        </form>
+      </div>
 
-        <div class="form-floating mb-3">
-          <input th:field="*{conceptoMovimiento}" type="text" class="form-control" id="fconceptoMovimiento" placeholder="Concepto Movimiento">
-          <label for="fconceptoMovimiento">Concepto movimiento</label>
-        </div>
-        <div class="form-floating  mb-3">
-          <input th:field="*{montoMovimiento}"  type="number" class="form-control" id="fmontoMovimiento" placeholder="Monto Movimiento">
-          <label for="fmontoMovimiento">Monto Movimiento</label>
-        </div>
-        <div class="mb-3 form-check">
-          <input th:field="*{egreso}" type="checkbox" class="form-check-input" id="egreso">
-          <label class="form-check-label" for="egreso">Marcar solo si es un egreso</label>
-        </div>
-        <div class="form-floating  mb-3">
-          <input th:field="*{fechaCreacion}"  type="date" class="form-control" id="ffechaCreacion" placeholder="fecha Creacion">
-          <label for="ffechaCreacion">Fecha creacion</label>
-        </div>
-        <div class="form-floating  mb-3">
-          <input th:field="*{fechaActualizacion}"  type="date" class="form-control" id="ffechaActualizacion" placeholder="fecha Actualizacion">
-          <label for="ffechaActualizacion">Fecha creacion</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input th:field="*{empleadoMovimiento.id}"  type="number" class="form-control" id="registroMedico" placeholder="Registro Medico">
-          <label for="registroMedico">ID del Empleado</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Crear</button>
-        <a href="/movimiento" class="btn btn-secundary">Cancelar</a>
-      </form>
+
 
 
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -121,8 +124,8 @@
                   </thead>
                   <tbody>
                   <tr th:each="empleados:${empleados}">
-                    <td th:text="${empleados.id}"></td>
-                    <td th:text="${empleados.Nombre}"></td>
+                    <td th:text="${empleadoMovimiento.id}"></td>
+                    <td th:text="${empleadoMovimiento.Nombre}"></td>
                   </tr>
                   </tbody>
                 </table>

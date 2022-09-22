@@ -78,6 +78,7 @@
             <th scope="col">Fecha actualización</th>
             <th scope="col">Fecha creación</th>
             <th scope="col">Nombre empleado</th>
+            <th scope="col">Editar/Eliminar</th>
           </tr>
           </thead>
           <tbody>
@@ -89,6 +90,14 @@
             <td th:text="${movimientos.fechaActualizacion}"></td>
             <td th:text="${movimientos.fechaCreacion}"></td>
             <td th:text="${movimientos.empleadoMovimiento.Nombre}"></td>
+            <td>   <form th:action="@{/movimiento/{id}(id=${movimientos.id})}" th:method="get">
+              <button type="submit" class="btn btn-primary">Editar</button>
+            </form>
+
+              <form th:action="@{/movimiento/{id}(id=${movimientos.id})}" th:method="delete">
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+              </form>
+            </td>
           </tr>
           </tbody>
         </table>
