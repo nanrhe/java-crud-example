@@ -4,6 +4,7 @@ import org.UID.Entidades.Empleado;
 import org.UID.Entidades.MovimientoDinero;
 import org.UID.Servicios.ServicioEmpleado;
 import org.UID.Servicios.ServicioMovimientoDinero;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
@@ -20,7 +21,7 @@ public class ControladorMovimientoDinero {
     }
     //////////// Mapeador navegacion Servicio movimiento
     @PostMapping("/movimiento")
-    public RedirectView createMovimiento(@ModelAttribute MovimientoDinero p, Model modelNm){
+    public RedirectView createMovimiento(@ModelAttribute @DateTimeFormat(pattern = "YYYY-MM-DD")MovimientoDinero p, Model modelNm){
         modelNm.addAttribute((p));
         this.servicesMD.createMovimiento(p);
         return new RedirectView("/movimiento");

@@ -85,12 +85,12 @@
             <label class="form-check-label" for="egreso">Marcar solo si es un egreso</label>
           </div>
           <div class="form-floating  mb-3">
-            <input th:field="*{fechaCreacion}"  type="date" class="form-control" id="ffechaCreacion" placeholder="fecha Creacion">
+            <input th:field="*{fechaCreacion}"  type="datetime-local" class="form-control" id="ffechaCreacion" placeholder="fecha Creacion">
             <label for="ffechaCreacion">Fecha creacion</label>
           </div>
           <div class="form-floating  mb-3">
-            <input th:field="*{fechaActualizacion}"  type="date" class="form-control" id="ffechaActualizacion" placeholder="fecha Actualizacion">
-            <label for="ffechaActualizacion">Fecha creacion</label>
+            <input th:field="*{fechaActualizacion}"  type="datetime-local" class="form-control" id="ffechaActualizacion" placeholder="fecha Actualizacion">
+            <label for="ffechaActualizacion">Fecha Actualizar</label>
           </div>
           <div class="form-floating mb-3">
             <input th:field="*{empleadoMovimiento.id}"  type="number" class="form-control" id="registroMedico" placeholder="Id Empleado">
