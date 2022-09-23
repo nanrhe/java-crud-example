@@ -23,20 +23,27 @@
 
     <main class="px-3">
         <h1>UID</h1>
-        <div sec:authorize="!isAuthenticated()">
-            <a class="btn btn-lg btn-secondary fw-bold" th:href="@{/oauth2/authorization/auth0}">Iniciar sesion</a>
+
+        <div class="card text-white bg-dark border-light col-lg-5 mx-auto">
+
+            <div class="card-body">
+                <div sec:authorize="!isAuthenticated()">
+                    <a class="btn btn-lg btn-secondary fw-bold" th:href="@{/oauth2/authorization/auth0}">Iniciar sesion</a>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <p class="lead">
+
+                        <img th:src="${profile.get('picture')}" th:attr="alt=${profile.get('name')}"/>
+                    <h2 th:text="${profile.get('name')}"></h2>
+                    <p th:text="${profile.get('email')}"></p>
+
+                    <a href="/inicio" class="btn btn-lg btn-secondary fw-bold ">Entrar</a>
+
+                    </p>
+                </div>
+            </div>
         </div>
-        <div sec:authorize="isAuthenticated()">
-            <p class="lead">
 
-                <img th:src="${profile.get('picture')}" th:attr="alt=${profile.get('name')}"/>
-                <h2 th:text="${profile.get('name')}"></h2>
-                <p th:text="${profile.get('email')}"></p>
-
-                <a href="/inicio" class="btn btn-lg btn-secondary fw-bold ">Entrar</a>
-
-            </p>
-        </div>
 
     </main>
 
