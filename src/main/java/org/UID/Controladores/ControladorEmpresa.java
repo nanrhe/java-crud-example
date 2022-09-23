@@ -4,6 +4,8 @@ import org.UID.Entidades.Empleado;
 import org.UID.Entidades.Empresa;
 import org.UID.Entidades.MovimientoDinero;
 import org.UID.Servicios.ServicioEmpresa;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +25,10 @@ public class ControladorEmpresa {
     @GetMapping("/empresa")
     public List<Empresa> ListaEmpresa(){return this.servicesEmp.getListaEmpresa();}*/
     @GetMapping("/empresa")
-    public String ListaEmpresa(Model modelp) {
+    public String ListaEmpresa(Model modelp,@AuthenticationPrincipal OidcUser principal) {
+        if (principal != null) {
+            modelp.addAttribute("profile", principal.getClaims());
+        }
         List<Empresa> empresas = this.servicesEmp.getListaEmpresa();
         modelp.addAttribute("empresas",empresas);
         return "empresa";

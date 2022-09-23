@@ -3,6 +3,8 @@ package org.UID.Controladores;
 import org.UID.Entidades.Empleado;
 import org.UID.Entidades.MovimientoDinero;
 import org.UID.Servicios.ServicioEmpleado;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +20,10 @@ public class FrontControladorEmpleado {
     }
 
     @GetMapping("/empleado")
-    public String empleados(Model modelemp) {
+    public String empleados(Model modelemp, @AuthenticationPrincipal OidcUser principal){
+        if (principal != null) {
+            modelemp.addAttribute("profile", principal.getClaims());
+        }
         List<Empleado> empleados = this.servicesE.getListaEmpleado();
         modelemp.addAttribute("empleados",empleados);
         return "empleado";
