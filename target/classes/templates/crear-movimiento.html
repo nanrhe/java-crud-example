@@ -96,6 +96,12 @@
             <input th:field="*{empleadoMovimiento.id}"  type="number" class="form-control" id="registroMedico" placeholder="Id Empleado">
             <label for="registroMedico">ID del Empleado</label>
           </div>
+          <div class="form-floating mb-3">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Consultar ID empleados
+            </button>
+          </div>
+
           <button type="submit" class="btn btn-primary">Crear</button>
           <a href="/movimiento" class="btn btn-secundary">Cancelar</a>
         </form>
@@ -104,9 +110,6 @@
 
 
 
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Consultar ID empleados
-      </button>
 
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -128,8 +131,8 @@
                   </thead>
                   <tbody>
                   <tr th:each="empleados:${empleados}">
-                    <td th:text="${empleadoMovimiento.id}"></td>
-                    <td th:text="${empleadoMovimiento.Nombre}"></td>
+                    <td th:text="${empleados.id}"></td>
+                    <td th:text="${empleados.Nombre}"></td>
                   </tr>
                   </tbody>
                 </table>

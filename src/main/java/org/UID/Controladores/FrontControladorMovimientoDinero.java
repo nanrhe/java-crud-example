@@ -1,6 +1,8 @@
 package org.UID.Controladores;
 
+import org.UID.Entidades.Empleado;
 import org.UID.Entidades.MovimientoDinero;
+import org.UID.Servicios.ServicioEmpleado;
 import org.UID.Servicios.ServicioMovimientoDinero;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
@@ -15,8 +17,10 @@ import java.util.List;
 public class FrontControladorMovimientoDinero {
 
     ServicioMovimientoDinero servicesMD;
-    public FrontControladorMovimientoDinero(ServicioMovimientoDinero servicesMD) {
+    ServicioEmpleado servicesE;
+    public FrontControladorMovimientoDinero(ServicioMovimientoDinero servicesMD,ServicioEmpleado servicesE) {
         this.servicesMD = servicesMD;
+        this.servicesE = servicesE;
     }
     ///Mapeador para movimiento dinero
 
@@ -27,6 +31,8 @@ public class FrontControladorMovimientoDinero {
         }
         List<MovimientoDinero> movimientos = this.servicesMD.getListaMovimientoDinero();
         modelp.addAttribute("movimientos",movimientos);
+        List<Empleado> empleados = this.servicesE.getListaEmpleado();
+        modelp.addAttribute("empleados",empleados);
         return "movimiento";
     }
 
@@ -35,6 +41,8 @@ public class FrontControladorMovimientoDinero {
         if (principal != null) {
             modelnp.addAttribute("profile", principal.getClaims());
         }
+        List<Empleado> empleados = this.servicesE.getListaEmpleado();
+        modelnp.addAttribute("empleados",empleados);
         modelnp.addAttribute("movimiento", new MovimientoDinero());
         return "crear-movimiento";
     }
@@ -48,4 +56,6 @@ public class FrontControladorMovimientoDinero {
         model.addAttribute("movimientoFind", movimientoFind);
         return "editar-movimiento";
     }
+
+
 }
