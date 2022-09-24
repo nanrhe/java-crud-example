@@ -42,6 +42,14 @@ public class Empleado {
         this.rol = rol;
     }*/
 
+    public int getDocumentoEmpleado() {
+        return documentoEmpleado;
+    }
+
+    public void setDocumentoEmpleado(int documentoEmpleado) {
+        this.documentoEmpleado = documentoEmpleado;
+    }
+
     public long getId() {
         return id;
     }

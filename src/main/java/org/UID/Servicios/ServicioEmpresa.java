@@ -1,10 +1,8 @@
 package org.UID.Servicios;
 
-import org.UID.Entidades.Empleado;
 import org.UID.Entidades.Empresa;
 import org.UID.Repositorio.RepositorioEmpresa;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -27,6 +25,8 @@ public class ServicioEmpresa {
         Empresa estadoActual = repositorioEmp.findById(id).orElseThrow();
         estadoActual.setNit(nuevaempresa.getNit());
         estadoActual.setNombreEmpresa(nuevaempresa.getNombreEmpresa());
+        estadoActual.setDireccion(nuevaempresa.getDireccion());
+        estadoActual.setTelefono(nuevaempresa.getTelefono());
         return this.repositorioEmp.save(estadoActual);
     }
     public Empresa eliminarEmp(Long id){

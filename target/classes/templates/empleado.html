@@ -69,36 +69,70 @@
         <h1 class="h2">Empleados</h1>
       </div>
 
+      <a class="btn btn-primary" href="/empleado/nuevo">Agregar nuevo Empleado</a>
 
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+          <tr>
+            <th scope="col">Id Empleado</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">documento Empleado</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Rol Empleado</th>
+            <th scope="col">Empresa Id</th>
 
-      <div class="d-flex justify-content-center gap-3">
-        <!-- estas son las tarjetas de cada paciente -->
-        <div th:each="pacientes:${pacientes}"  class="card" style="width: 18rem;">
-          <img src="img/grupo.png" class="d-block mx-auto my-5 mb-4" alt="Usuario" height="100">
-          <div class="card-body">
-            <h5 th:text="${pacientes.nombre}"  class="card-title"></h5>
-            <label>Documento:</label>
-            <p  th:text="${pacientes.documentoIdentidad}"   class="card-text"></p>
-            <p  th:text="${pacientes.descripcionEnfermedad}"   class="card-text"></p>
-            <p  th:text="${pacientes.edad}"   class="card-text"></p>
-            <p  th:text="${pacientes.telefono}"   class="card-text"></p>
-            <p  th:text="${pacientes.profesionales.nombreMedico}"   class="card-text"></p>
-
-            <div class="d-flex gap-1 justify-content-center">
-              <form th:action="@{/pacientes/{id}(id=${pacientes.documentoIdentidad})}" th:method="get">
-                <button type="submit" class="btn btn-primary">Editar</button>
-              </form>
-
-              <form th:action="@{/pacientes/{id}(id=${pacientes.documentoIdentidad})}" th:method="delete">
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="empleados:${empleados}">
+            <td th:text="${empleados.id}"></td>
+            <td th:text="${empleados.Nombre}"></td>
+            <td th:text="${empleados.documentoEmpleado}"></td>
+            <td th:text="${empleados.correo}"></td>
+            <td th:text="${empleados.rol}"></td>
+            <td th:text="${empleados.empresas}"></td>
+            <td>   <a class="btn btn-primary" th:href="@{/empleado/{id}(id=${empleados.id})}" data-toggle="tooltip" data-placement="bottom" title="Editar">
+              <span data-feather="edit" class="align-text-bottom"></span>
+            </a>
+              <form th:action="@{/empleado/{id}(id=${empleados.id})}" th:method="delete">
                 <button type="submit" class="btn btn-danger">Eliminar</button>
               </form>
-            </div>
-
-
-
-          </div>
-        </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
+
+
+<!--      <div class="d-flex justify-content-center gap-3">-->
+<!--        &lt;!&ndash; estas son las tarjetas de cada paciente &ndash;&gt;-->
+<!--        <div th:each="pacientes:${pacientes}"  class="card" style="width: 18rem;">-->
+<!--          <img src="img/grupo.png" class="d-block mx-auto my-5 mb-4" alt="Usuario" height="100">-->
+<!--          <div class="card-body">-->
+<!--            <h5 th:text="${pacientes.nombre}"  class="card-title"></h5>-->
+<!--            <label>Documento:</label>-->
+<!--            <p  th:text="${pacientes.documentoIdentidad}"   class="card-text"></p>-->
+<!--            <p  th:text="${pacientes.descripcionEnfermedad}"   class="card-text"></p>-->
+<!--            <p  th:text="${pacientes.edad}"   class="card-text"></p>-->
+<!--            <p  th:text="${pacientes.telefono}"   class="card-text"></p>-->
+<!--            <p  th:text="${pacientes.profesionales.nombreMedico}"   class="card-text"></p>-->
+
+<!--            <div class="d-flex gap-1 justify-content-center">-->
+<!--              <form th:action="@{/pacientes/{id}(id=${pacientes.documentoIdentidad})}" th:method="get">-->
+<!--                <button type="submit" class="btn btn-primary">Editar</button>-->
+<!--              </form>-->
+
+<!--              <form th:action="@{/pacientes/{id}(id=${pacientes.documentoIdentidad})}" th:method="delete">-->
+<!--                <button type="submit" class="btn btn-danger">Eliminar</button>-->
+<!--              </form>-->
+<!--            </div>-->
+
+
+
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
 
 
 

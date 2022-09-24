@@ -1,16 +1,12 @@
 package org.UID.Controladores;
 
 import org.UID.Entidades.Empleado;
-import org.UID.Entidades.Empresa;
-import org.UID.Entidades.MovimientoDinero;
 import org.UID.Servicios.ServicioEmpleado;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.List;
-
-@Controller
+@RestController
 public class ControladorEmpleado {
 
 
@@ -26,21 +22,26 @@ public class ControladorEmpleado {
     }*/
 
 
-    @GetMapping("/empleado/{id}")
-    public Empleado verEmpleado(@PathVariable Long id) {
-        return this.servicesE.getVerEmpleado(id);
-    }
+//    @GetMapping("/empleado/{id}")
+//    public Empleado verEmpleado(@PathVariable Long id) {
+//        return this.servicesE.getVerEmpleado(id);
+//    }
     @PostMapping("/empleado")
-    public Empleado createEmpleado(@RequestBody Empleado empleado ){return this.servicesE.createEmpleado(empleado);
+    public RedirectView createEmpleado(@ModelAttribute Empleado empleado, Model model){
+        model.addAttribute(empleado);
+        this.servicesE.createEmpleado(empleado);
+        return new RedirectView("/empleado");
     }
 
-    @PutMapping("/empleado/editar/{id}")
-    public Empleado actualizarEmpleado(@PathVariable Long id, @RequestBody Empleado actEmpleado){
-    return this.servicesE.actEmpleado(id, actEmpleado);
+    @PutMapping("/empleado/{id}")
+    public RedirectView actualizarEmpleado(@PathVariable Long id, Empleado actEmpleado){
+    this.servicesE.actEmpleado(id, actEmpleado);
+    return  new RedirectView("/empleado");
     }
 
     @DeleteMapping("/empleado/{id}")
-    public Empleado eliminarEmpleado(@PathVariable(value = "id") Long id){
-        return this.servicesE.eliminarE(id);
+    public RedirectView eliminarEmpleado(@PathVariable(value = "id") Long id){
+        this.servicesE.eliminarE(id);
+        return new RedirectView("/empleado");
     }
 }

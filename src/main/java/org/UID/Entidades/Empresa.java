@@ -8,7 +8,7 @@ import java.util.Set;
 public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  long id;
+    private long id;
     @Column(name = "nit")
     private int nit;
     @Column(name = "nombreEmpresa")
@@ -33,6 +33,7 @@ public class Empresa {
         this.telefono = telefono;
     }
 */
+
     public long getId() {
         return id;
     }

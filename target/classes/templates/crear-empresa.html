@@ -1,31 +1,25 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Los cinco en Linea">
-  <title>Crear Empresa</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Crear Empleado</title>
   <link href="/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="/dashboard.css" rel="stylesheet">
   <link href="/styles.css" rel="stylesheet">
 </head>
 <body>
-
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow ">
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">UID</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="navbar-nav d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ">
+  <div class="navbar-nav">
     <div class="nav-item text-nowrap" sec:authorize="isAuthenticated()">
-
-      <img th:src="${profile.get('picture')}" th:attr="alt=${profile.get('name')}"  width="32" height="32" class="rounded-circle"/>
-      <span class="text-white" th:text="${profile.get('name')}"></span>
-      <a th:href="@{/logout}" class="btn btn-outline-light" >Salir</a>
-
+      <a th:href="@{/logout}" class="nav-link px-3" >SALIR</a>
     </div>
   </div>
 </header>
@@ -42,7 +36,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="/empresa">
+            <a class="nav-link" href="/empresa">
               <span data-feather="file" class="align-text-bottom"></span>
               Empresa
             </a>
@@ -69,22 +63,33 @@
         <h1 class="h2">Crear Empresa</h1>
       </div>
 
+      <form th:action="@{/empresa}" th:method="post" th:object="${empresa}">
 
+        <div class="form-floating  mb-3">
+          <input th:field="*{nit}"  type="number" class="form-control" id="fnit" placeholder="Nit Empresa">
+          <label for="fnit">Nit Empresa</label>
+        </div>
+        <div class="form-floating  mb-3">
+          <input th:field="*{nombreEmpresa}"  type="text" class="form-control" id="fnombreEmpresa" placeholder="Nombre de la Empresa">
+          <label for="fnombreEmpresa">Nombre de la Empresa</label>
+        </div>
 
+        <div class="form-floating  mb-3">
+          <input th:field="*{direccion}" type="text" class="form-control"  id="fdireccion" placeholder="Direccion Empresa">
+          <label class="form-check-label" for="fdireccion">Direccion Empresa </label>
+        </div>
+        <div class="form-floating  mb-3">
+          <input th:field="*{telefono}"  type="number" class="form-control" id="ftelefono" placeholder="Telefono Empresa">
+          <label for="ftelefono">Telefono Empresa</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Crear</button>
+        <a href="/empresa" class="btn btn-secundary">Cancelar</a>
 
-
-
-
-
-
-
-
-
-
-
+      </form>
 
 
     </main>
+
   </div>
 </div>
 

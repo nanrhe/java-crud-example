@@ -1,7 +1,6 @@
 package org.UID.Servicios;
 
 import org.UID.Entidades.Empleado;
-import org.UID.Entidades.MovimientoDinero;
 import org.UID.Repositorio.RepositorioEmpleado;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +30,9 @@ public class ServicioEmpleado {
         Empleado empleadoActual = repositorioE.findById(id).orElseThrow();
         empleadoActual.setNombre(nuevoempleado.getNombre());
         empleadoActual.setCorreo(nuevoempleado.getCorreo());
+        empleadoActual.setEmpresas(nuevoempleado.getEmpresas());
+        empleadoActual.setRol(nuevoempleado.getRol());
+        empleadoActual.setDocumentoEmpleado(nuevoempleado.getDocumentoEmpleado());
         return this.repositorioE.save(empleadoActual);
     }
     //metodo Borrar
