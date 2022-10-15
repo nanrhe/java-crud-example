@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Los cinco en Linea">
+  <title>Empresa</title>
+
+  <link href="/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="/dashboard.css" rel="stylesheet">
+  <link href="/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow ">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">UID</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-nav d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ">
+    <div class="nav-item text-nowrap" sec:authorize="isAuthenticated()">
+
+      <img th:src="${profile.get('picture')}" th:attr="alt=${profile.get('name')}"  width="32" height="32" class="rounded-circle"/>
+      <span class="text-white" th:text="${profile.get('name')}"></span>
+      <a th:href="@{/logout}" class="btn btn-outline-light" >Salir</a>
+
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3 sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/inicio">
+              <span data-feather="home" class="align-text-bottom"></span>
+              Inicio
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/empresa">
+              <span data-feather="file" class="align-text-bottom"></span>
+              Empresa
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/empleado">
+              <span data-feather="users" class="align-text-bottom"></span>
+              Empleado
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/movimiento">
+              <span data-feather="shopping-cart" class="align-text-bottom"></span>
+              Movimiento Dinero
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Empresa</h1>
+      </div>
+
+      <a class="btn btn-primary" href="/empresa/nuevo">Agregar Empresa</a>
+
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+          <tr>
+            <th scope="col">Id Empresa</th>
+            <th scope="col">Nit</th>
+            <th scope="col">Nombre Empresa</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Telefono</th>
+
+            <th scope="col">Editar/Eliminar</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="empresa:${empresa}">
+            <td th:text="${empresa.id}"></td>
+            <td th:text="${empresa.nit}"></td>
+            <td th:text="${empresa.nombreEmpresa}"></td>
+            <td th:text="${empresa.direccion}"></td>
+            <td th:text="${empresa.telefono}"></td>
+
+            <td>   <a class="btn btn-primary" th:href="@{/empresa/{id}(id=${empresa.id})}" data-toggle="tooltip" data-placement="bottom" title="Editar">
+              <span data-feather="edit" class="align-text-bottom"></span>
+            </a>
+
+              <form th:action="@{/empresa/{id}(id=${empresa.id})}" th:method="delete">
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+              </form>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+  </div>
+</div>
+
+
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+<script src="/js/dashboard.js"></script>
+</body>
+</html>

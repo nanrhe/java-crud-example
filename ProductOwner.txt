@@ -1,0 +1,3 @@
+Rol: Product Owner	
+Nombre: Hernán Hincapié	
+Funcion: Conocer el producto software que se va a elaborar en el proyecto.
